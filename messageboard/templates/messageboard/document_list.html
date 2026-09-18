@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Documents</title>
+</head>
+
+<body>
+
+    <h1>Uploaded Documents</h1>
+
+    <hr>
+
+    {% for document in documents %}
+
+        <p>
+            <strong>Title:</strong>
+            {{ document.title }}
+        </p>
+
+        <p>
+            <strong>Uploaded At:</strong>
+            {{ document.uploaded_at }}
+        </p>
+
+        <p>
+            <a href="{{ document.file.url }}" target="_blank">
+                Open / Download
+            </a>
+        </p>
+
+        <p>
+            <a href="{% url 'document_delete' document.id %}">
+                Delete
+            </a>
+        </p>
+
+        <hr>
+
+    {% empty %}
+
+        <p>No documents uploaded.</p>
+
+    {% endfor %}
+
+    <br>
+
+    <a href="/messages/documents/upload/">
+        Upload New Document
+    </a>
+
+    <br>
+    <br>
+
+    <a href="/messages/">
+        Back to Message Board
+    </a>
+
+</body>
+
+</html>

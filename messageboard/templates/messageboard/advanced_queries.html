@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Advanced ORM Queries</title>
+</head>
+
+<body>
+
+    <h1>Advanced Django ORM Queries</h1>
+
+    <hr>
+
+    <h2>1. Total Number of Messages</h2>
+
+    <p>
+        Total messages:
+        <strong>{{ total_messages }}</strong>
+    </p>
+
+    <hr>
+
+    <h2>2. All Messages</h2>
+
+    {% for msg in all_messages %}
+
+        <p>
+            <strong>Name:</strong> {{ msg.name }}
+        </p>
+
+        <p>
+            <strong>Email:</strong> {{ msg.email }}
+        </p>
+
+        <p>
+            <strong>Message:</strong> {{ msg.message }}
+        </p>
+
+        <hr>
+
+    {% empty %}
+
+        <p>No messages found.</p>
+
+    {% endfor %}
+
+
+    <h2>3. Messages by PRIYA</h2>
+
+    {% for msg in priya_messages %}
+
+        <p>
+            {{ msg.name }} -
+            {{ msg.email }} -
+            {{ msg.message }}
+        </p>
+
+    {% empty %}
+
+        <p>No messages found for PRIYA.</p>
+
+    {% endfor %}
+
+    <hr>
+
+    <h2>4. Messages with Gmail Address</h2>
+
+    {% for msg in gmail_messages %}
+
+        <p>
+            {{ msg.name }} -
+            {{ msg.email }}
+        </p>
+
+    {% empty %}
+
+        <p>No Gmail messages found.</p>
+
+    {% endfor %}
+
+    <hr>
+
+    <h2>5. Messages Containing "hello"</h2>
+
+    {% for msg in hello_messages %}
+
+        <p>
+            {{ msg.name }} -
+            {{ msg.message }}
+        </p>
+
+    {% empty %}
+
+        <p>No messages containing "hello" found.</p>
+
+    {% endfor %}
+
+    <hr>
+
+    <h2>6. Messages Ordered by Latest First</h2>
+
+    {% for msg in latest_messages %}
+
+        <p>
+            {{ msg.name }} -
+            {{ msg.created_at }}
+        </p>
+
+    {% endfor %}
+
+</body>
+</html>

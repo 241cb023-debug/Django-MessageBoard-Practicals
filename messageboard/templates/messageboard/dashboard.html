@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Dashboard</title>
+</head>
+
+<body>
+
+    <h1>Message Board Dashboard</h1>
+
+    <hr>
+
+    <h2>Statistics</h2>
+
+    <p>
+        <strong>Total Messages:</strong>
+        {{ total_messages }}
+    </p>
+
+    <p>
+        <strong>Gmail Messages:</strong>
+        {{ gmail_messages }}
+    </p>
+
+    <p>
+        <strong>Yahoo Messages:</strong>
+        {{ yahoo_messages }}
+    </p>
+
+    <p>
+        <strong>Outlook Messages:</strong>
+        {{ outlook_messages }}
+    </p>
+
+    <hr>
+
+    <h2>Latest 5 Messages</h2>
+
+    {% for msg in latest_messages %}
+
+        <p>
+            <strong>Name:</strong>
+            {{ msg.name }}
+        </p>
+
+        <p>
+            <strong>Email:</strong>
+            {{ msg.email }}
+        </p>
+
+        <p>
+            <strong>Message:</strong>
+            {{ msg.message }}
+        </p>
+
+        <hr>
+
+    {% empty %}
+
+        <p>No messages found.</p>
+
+    {% endfor %}
+
+    <br>
+
+    <a href="/messages/">
+        Back to Message Board
+    </a>
+
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Upload Document</title>
+</head>
+
+<body>
+
+    <h1>Upload Document</h1>
+
+    <hr>
+
+    <form method="POST" enctype="multipart/form-data">
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit">
+            Upload
+        </button>
+
+    </form>
+
+    <br>
+
+    <a href="/messages/">
+        Back to Message Board
+    </a>
+
+</body>
+
+</html>

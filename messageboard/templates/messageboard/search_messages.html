@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Search Messages</title>
+</head>
+
+<body>
+
+    <h1>Search and Filter Messages</h1>
+
+    <hr>
+
+    <form method="GET">
+
+        <label>Search:</label>
+
+        <input
+            type="text"
+            name="search"
+            value="{{ search }}"
+            placeholder="Search name, email or message"
+        >
+
+        <br><br>
+
+        <label>Filter by Email Domain:</label>
+
+        <select name="domain">
+
+            <option value="">All</option>
+
+            <option value="gmail"
+                {% if domain == "gmail" %}selected{% endif %}>
+                Gmail
+            </option>
+
+            <option value="yahoo"
+                {% if domain == "yahoo" %}selected{% endif %}>
+                Yahoo
+            </option>
+
+            <option value="outlook"
+                {% if domain == "outlook" %}selected{% endif %}>
+                Outlook
+            </option>
+
+        </select>
+
+        <br><br>
+
+        <button type="submit">
+            Search / Filter
+        </button>
+
+        <a href="/messages/search/">
+            Clear
+        </a>
+
+    </form>
+
+    <hr>
+
+    <h2>Messages</h2>
+
+    {% for msg in messages %}
+
+        <p>
+            <strong>Name:</strong>
+            {{ msg.name }}
+        </p>
+
+        <p>
+            <strong>Email:</strong>
+            {{ msg.email }}
+        </p>
+
+        <p>
+            <strong>Message:</strong>
+            {{ msg.message }}
+        </p>
+
+        <hr>
+
+    {% empty %}
+
+        <p>No matching messages found.</p>
+
+    {% endfor %}
+
+    <br>
+
+    <a href="/messages/">
+        Back to Message Board
+    </a>
+
+</body>
+
+</html>
